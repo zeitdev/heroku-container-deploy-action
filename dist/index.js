@@ -1260,7 +1260,8 @@ function run() {
         const formation = {
             updates: dynos,
         };
-        yield heroku.patch(`/apps/${appName}/formation`, { body: formation });
+        const response = yield heroku.patch(`/apps/${appName}/formation`, { body: formation });
+        console.log(response);
     });
 }
 try {
