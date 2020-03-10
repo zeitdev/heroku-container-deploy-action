@@ -41,7 +41,8 @@ async function run() {
     updates: dynos,
   };
 
-  await heroku.patch(`/apps/${appName}/formation`, {body: formation});
+  const response = await heroku.patch(`/apps/${appName}/formation`, {body: formation});
+  console.log(response);
 }
 
 try {
