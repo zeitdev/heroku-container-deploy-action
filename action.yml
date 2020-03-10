@@ -1,0 +1,22 @@
+name: 'Deploy container to heroku'
+description: 'Deploy container to heroku by updating formation'
+inputs:
+  app:
+    description: 'Name of app to create / update'
+    required: true
+  heroku_api_token:
+    description: 'Heroku API Token'
+    required: true
+  app_json:
+    description: 'Path to app.json, default: app.json'
+    required: false
+    default: 'app.json'
+  image_repo:
+    description: 'Docker repository of image to deploy'
+    required: true
+  image_tag:
+    description: 'Tag to deploy (e.g. $GITHUB_SHA)'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
