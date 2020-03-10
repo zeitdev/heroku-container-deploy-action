@@ -35,6 +35,8 @@ async function run() {
     size: undefined,
   });
 
+  console.log('Updating formation...', dynos);
+
   const formation = {
     updates: dynos,
   };
