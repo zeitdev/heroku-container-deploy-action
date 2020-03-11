@@ -1260,7 +1260,7 @@ function run() {
         const formation = {
             updates: dynos,
         };
-        const response = yield heroku.patch(`/apps/${appName}/formation`, { body: formation });
+        const response = yield heroku.patch(`/apps/${appName}/formation`, { body: formation, headers: { Accept: 'application/vnd.heroku+json; version=3.docker-releases' } });
         console.log(response);
     });
 }

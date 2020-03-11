@@ -41,7 +41,7 @@ async function run() {
     updates: dynos,
   };
 
-  const response = await heroku.patch(`/apps/${appName}/formation`, {body: formation});
+  const response = await heroku.patch(`/apps/${appName}/formation`, {body: formation, headers: {Accept: 'application/vnd.heroku+json; version=3.docker-releases'}});
   console.log(response);
 }
 
