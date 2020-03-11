@@ -19229,7 +19229,7 @@ function run() {
         const imageRepository = core.getInput('image_repo');
         const imageTag = core.getInput('image_tag');
         const heroku = new Heroku({ token: herokuApiToken });
-        const docker = new docker_cli_js_1.Docker();
+        const docker = new docker_cli_js_1.Docker({ echo: false });
         const appJson = JSON.parse(fs.readFileSync(appJsonPath).toString());
         const dynos = yield Promise.all(lodash_es_1.map(appJson.formation, (dynoDef, type) => __awaiter(this, void 0, void 0, function* () {
             return Object.assign(Object.assign({ type }, dynoDef), { docker_image: yield getImageId(docker, `${imageRepository}/${type}:${imageTag}`) });

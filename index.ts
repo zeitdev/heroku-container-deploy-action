@@ -26,7 +26,7 @@ async function run() {
   const imageTag = core.getInput('image_tag');
 
   const heroku = new Heroku({token: herokuApiToken});
-  const docker = new Docker();
+  const docker = new Docker({echo: false});
   const appJson: AppJson = JSON.parse(fs.readFileSync(appJsonPath).toString());
 
   const dynos: FormationDyno[] = await Promise.all(map(appJson.formation, async(dynoDef, type) => {
