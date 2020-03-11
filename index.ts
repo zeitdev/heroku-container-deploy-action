@@ -13,10 +13,10 @@ export interface FormationDyno {
 }
 
 async function getImageId(docker: Docker, tag: string) {
-  const data = await docker.command(`inspect ${tag} --format={{.Id}}`);
+  const data = await docker.command(`inspect ${tag}`);
 
   console.log(data);
-  return data.raw as string;
+  return data.object[0].Id as string;
 }
 
 async function run() {

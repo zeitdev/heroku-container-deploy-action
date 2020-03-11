@@ -19217,9 +19217,9 @@ const lodash_es_1 = __webpack_require__(857);
 const Heroku = __webpack_require__(105);
 function getImageId(docker, tag) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield docker.command(`inspect ${tag} --format={{.Id}}`);
+        const data = yield docker.command(`inspect ${tag}`);
         console.log(data);
-        return data.raw;
+        return data.object[0].Id;
     });
 }
 function run() {
