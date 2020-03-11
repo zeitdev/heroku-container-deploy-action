@@ -19218,7 +19218,6 @@ const Heroku = __webpack_require__(105);
 function getImageId(docker, tag) {
     return __awaiter(this, void 0, void 0, function* () {
         const data = yield docker.command(`inspect ${tag}`);
-        console.log(data);
         return data.object[0].Id;
     });
 }
