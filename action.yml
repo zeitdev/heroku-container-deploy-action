@@ -17,6 +17,9 @@ inputs:
   image_tag:
     description: 'Tag to deploy (e.g. $GITHUB_SHA)'
     required: true
+  web_only:
+    description: 'Do not use a release container'
+    default: false
 runs:
   using: 'node12'
   main: 'dist/index.js'

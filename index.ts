@@ -24,6 +24,7 @@ async function run() {
   const appJsonPath = core.getInput('app_json');
   const imageRepository = core.getInput('image_repo');
   const imageTag = core.getInput('image_tag');
+  const webOnly = core.getInput('web_only');
 
   const heroku = new Heroku({token: herokuApiToken});
   const docker = new Docker({echo: false});
@@ -36,12 +37,15 @@ async function run() {
       docker_image: await getImageId(docker, `${imageRepository}/${type}:${imageTag}`),
     };
   }));
-  dynos.push({
-    type: 'release',
-    quantity: undefined,
-    docker_image: await getImageId(docker, `${imageRepository}/release:${imageTag}`),
-    size: undefined,
-  });
+
+  if (!webOnly) {
+    dynos.push({
+      type: 'release',
+      quantity: undefined,
+      docker_image: await getImageId(docker, `${imageRepository}/release:${imageTag}`),
+      size: undefined,
+    });
+  }
 
   console.log('Updating formation...', dynos);
 
