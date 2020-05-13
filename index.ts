@@ -24,7 +24,7 @@ async function run() {
   const appJsonPath = core.getInput('app_json');
   const imageRepository = core.getInput('image_repo');
   const imageTag = core.getInput('image_tag');
-  const webOnly = core.getInput('web_only');
+  const webOnly = core.getInput('web_only') === 'true';
 
   const heroku = new Heroku({token: herokuApiToken});
   const docker = new Docker({echo: false});

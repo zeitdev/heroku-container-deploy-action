@@ -19228,7 +19228,7 @@ function run() {
         const appJsonPath = core.getInput('app_json');
         const imageRepository = core.getInput('image_repo');
         const imageTag = core.getInput('image_tag');
-        const webOnly = core.getInput('web_only');
+        const webOnly = core.getInput('web_only') === 'true';
         const heroku = new Heroku({ token: herokuApiToken });
         const docker = new docker_cli_js_1.Docker({ echo: false });
         const appJson = JSON.parse(fs.readFileSync(appJsonPath).toString());
